@@ -3,9 +3,9 @@ fos_rest:
     param_fetcher_listener: true
     service:
         serializer: fos_rest.serializer.symfony
-    exception:
-        enabled: true
-        exception_controller: 'fos_rest.exception.controller:showAction'
+    # exception:
+    #     enabled: true
+        #exception_controller: 'fos_rest.exception.controller:showAction'
     format_listener:
         enabled: true
         rules:

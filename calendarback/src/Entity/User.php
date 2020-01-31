@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -16,21 +17,25 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"user","event"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"user","event"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"user","event"})
      */
     private $mail;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"user","event"})
      */
     private $roles = [];
 
@@ -42,11 +47,13 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="creator", orphanRemoval=true)
+     * @Groups({"user"})
      */
     private $bookingsCreated;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="subscribedUser")
+     * @Groups({"user"})
      */
     private $bookingsReserved;
 

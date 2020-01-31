@@ -2,7 +2,7 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 api_auth_login:
-    path: /api/auth/login
+    path: /api/auth
     methods:  [POST]
 api:
     prefix: /api

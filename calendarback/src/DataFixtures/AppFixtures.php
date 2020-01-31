@@ -32,7 +32,7 @@ class AppFixtures extends Fixture
             // $encoded = $encoder->encodePassword($users[$i], $plainPassword);
             $users[$i]->setMail($faker->email)
                 ->setPassword($encoded)
-                ->setRoles(['ROLE_TEACHER'])
+                ->setRoles(['ROLE_ADMIN'])
                 ->setUsername($faker->userName);
             $em->persist($users[$i]);
         }

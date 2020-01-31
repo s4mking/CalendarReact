@@ -11,9 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-/**
- * @Rest\Route(path="auth/")
- */
+
 class ApiAuthController extends FOSRestController
 {
 
@@ -23,6 +21,7 @@ class ApiAuthController extends FOSRestController
     }
     /**
      * @Rest\Route(path="register", methods={"POST"}, name="api_auth_register")
+     * @Rest\Post("/users")
      * @param Request $request
      * @param User $userManager
      * @return JsonResponse|\Symfony\Component\HttpFoundation\RedirectResponse
