@@ -4,10 +4,22 @@ import api from "./Api"
 
 class Login extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: ""
+        };
+    }
+
+    handleChange = (e) => {
+        this.setState({[e.target.name]:e.target.value})
+    }
+
     handleSubmit(e) {
         e.preventDefault()
-        api.getToken((json) => {
-            console.log("eee", json)
+        api.getToken(this.state.email,this.state.password).then((json) => {
+            console.log("eliott", json)
         })
     }
 
@@ -20,8 +32,8 @@ class Login extends React.Component {
                     </div>
 
                     <form onSubmit={this.handleSubmit.bind(this)}>
-                        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login"/>
-                        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"/>
+                        <input type="text" id="login" class="fadeIn second"name="email" value={ this.state.email } onChange={ this.handleChange }  placeholder="login"/>
+                        <input type="text" id="password" class="fadeIn third" name="password" value={ this.state.password } onChange={ this.handleChange } placeholder="password"/>
                         <button type="submit" class="fadeIn fourth" value="Log In"/>
                     </form>
 
