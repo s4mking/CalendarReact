@@ -25,6 +25,7 @@ class Login extends React.Component {
 
     logout = () => {
         localStorage.clear('token');
+        console.log(localStorage.getItem('token'));
     }
 
     render() {

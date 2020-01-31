@@ -38,7 +38,6 @@ class Register extends React.Component {
                         <input type="text" id="name" class="fadeIn second" name="username" value={ this.state.username } onChange={ this.handleChange }  placeholder="First name"/>
                         <input type="text" id="login" class="fadeIn second" name="email" value={ this.state.email } onChange={ this.handleChange } placeholder="Email"/>
                         <input type="text" id="password" class="fadeIn third" name="password" value={ this.state.password } onChange={ this.handleChange } placeholder="Password"/>
-                        {/* <input type="text" id="repeatpassword" class="fadeIn third" name="login" placeholder="Repeat Password"/> */}
                         <button type="submit" class="fadeIn fourth" value="Register"/>
                     </form>
 
