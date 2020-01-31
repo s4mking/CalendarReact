@@ -2,6 +2,11 @@ import React from 'react';
 import profile from "../Assets/profile.jpg"
 
 class Register extends React.Component {
+
+    handleChange = (e) => {
+        this.setState({[e.target.name]:e.target.value})
+    }
+
     render() {
         return (
             <div class="wrapper fadeInDown">
