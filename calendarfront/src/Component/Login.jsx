@@ -23,6 +23,10 @@ class Login extends React.Component {
         })
     }
 
+    logout = () => {
+        localStorage.clear('token');
+    }
+
     render() {
         return (
             <div class="wrapper fadeInDown">
@@ -32,14 +36,14 @@ class Login extends React.Component {
                     </div>
 
                     <form onSubmit={this.handleSubmit.bind(this)}>
-                        <input type="text" id="login" class="fadeIn second"name="email" value={ this.state.email } onChange={ this.handleChange }  placeholder="login"/>
+                        <input type="text" id="login" class="fadeIn second" name="email" value={ this.state.email } onChange={ this.handleChange }  placeholder="login"/>
                         <input type="text" id="password" class="fadeIn third" name="password" value={ this.state.password } onChange={ this.handleChange } placeholder="password"/>
                         <button type="submit" class="fadeIn fourth" value="Log In"/>
                     </form>
 
-                    <div id="formFooter">
-                        <a class="underlineHover" href="/logout">Forgot Password?</a>
-                    </div>
+                    <form id="formFooter" onSubmit={this.logout.bind(this)}>
+                        <button type="submit"/> Logout
+                    </form>
 
                 </div>
             </div>

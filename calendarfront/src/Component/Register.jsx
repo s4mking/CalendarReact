@@ -1,10 +1,29 @@
 import React from 'react';
 import profile from "../Assets/profile.jpg"
+import api from "./Api"
+
 
 class Register extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            email: "",
+            password: ""
+        };
+    }
+
     handleChange = (e) => {
         this.setState({[e.target.name]:e.target.value})
+    }
+
+    handleSubmit(e) {
+        e.preventDefault()
+        api.Register(this.state.username, this.state.email, this.state.password).then((json) =>{
+            // this.props.changeStatus(true)
+            console.log(json)
+        })
     }
 
     render() {
@@ -15,12 +34,12 @@ class Register extends React.Component {
                         <img src={profile} id="icon" alt="User Icon" />
                     </div>
 
-                    <form>
-                        <input type="text" id="name" class="fadeIn second" name="login" placeholder="First name"/>
-                        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email"/>
-                        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password"/>
-                        <input type="text" id="repeatpassword" class="fadeIn third" name="login" placeholder="Repeat Password"/>
-                        <input type="submit" class="fadeIn fourth" value="Register"/>
+                    <form onSubmit={this.handleSubmit.bind(this)}>
+                        <input type="text" id="name" class="fadeIn second" name="username" value={ this.state.username } onChange={ this.handleChange }  placeholder="First name"/>
+                        <input type="text" id="login" class="fadeIn second" name="email" value={ this.state.email } onChange={ this.handleChange } placeholder="Email"/>
+                        <input type="text" id="password" class="fadeIn third" name="password" value={ this.state.password } onChange={ this.handleChange } placeholder="Password"/>
+                        {/* <input type="text" id="repeatpassword" class="fadeIn third" name="login" placeholder="Repeat Password"/> */}
+                        <button type="submit" class="fadeIn fourth" value="Register"/>
                     </form>
 
                     <div id="formFooter">
