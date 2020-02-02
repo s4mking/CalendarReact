@@ -21,50 +21,50 @@ class Calendar
         $this->router = $router;
     }
 
-    public function onCalendarSetData(CalendarEvent $calendar)
+    public function calendarMonthly($month)
     {
-        $start = $calendar->getStart();
-        $end = $calendar->getEnd();
-        $filters = $calendar->getFilters();
-
+        //pour linstant le format des daates ce sera send en ract 2012-06-02????
+        // $filters = $calendar->getFilters();
+        $firstMonthDay = date('Y-m-01 H:i:s', strtotime($month));
+        $lastDayMonth = date('Y-m-t H:i:s', strtotime($month));
         // Modify the query to fit to your entity and needs
         // Change booking.beginAt by your start date property
         $bookings = $this->bookingRepository
             ->createQueryBuilder('booking')
             ->where('booking.beginAt BETWEEN :start and :end OR booking.endAt BETWEEN :start and :end')
-            ->setParameter('start', $start->format('Y-m-d H:i:s'))
-            ->setParameter('end', $end->format('Y-m-d H:i:s'))
+            ->setParameter('start', $firstMonthDay)
+            ->setParameter('end', $lastDayMonth)
             ->getQuery()
             ->getResult();
+        return $bookings;
+        // foreach ($bookings as $booking) {
+        // this create the events with your data (here booking data) to fill calendar
+        // $bookingEvent = new Event(
+        //     $booking->getTitle(),
+        //     $booking->getBeginAt(),
+        //     $booking->getEndAt() // If the end date is null or not defined, a all day event is created.
+        // );
 
-        foreach ($bookings as $booking) {
-            // this create the events with your data (here booking data) to fill calendar
-            $bookingEvent = new Event(
-                $booking->getTitle(),
-                $booking->getBeginAt(),
-                $booking->getEndAt() // If the end date is null or not defined, a all day event is created.
-            );
-
-            /*
+        /*
              * Add custom options to events
              *
              * For more information see: https://fullcalendar.io/docs/event-object
              * and: https://github.com/fullcalendar/fullcalendar/blob/master/src/core/options.ts
              */
 
-            $bookingEvent->setOptions([
-                'backgroundColor' => 'red',
-                'borderColor' => 'red',
-            ]);
-            $bookingEvent->addOption(
-                'url',
-                $this->router->generate('api_get_booking', [
-                    'id' => $booking->getId(),
-                ])
-            );
+        // $bookingEvent->setOptions([
+        //     'backgroundColor' => 'red',
+        //     'borderColor' => 'red',
+        // ]);
+        // $bookingEvent->addOption(
+        //     'url',
+        //     $this->router->generate('api_get_booking', [
+        //         'id' => $booking->getId(),
+        //     ])
+        // );
 
-            // finally, add the event to the CalendarEvent to fill the calendar
-            $calendar->addEvent($bookingEvent);
-        }
+        // finally, add the event to the CalendarEvent to fill the calendar
+        // $calendar->addEvent($bookingEvent);
+        // }
     }
 }

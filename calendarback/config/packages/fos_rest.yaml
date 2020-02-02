@@ -9,6 +9,7 @@ fos_rest:
     format_listener:
         enabled: true
         rules:
+            - { path: '^/admin', priorities: ['html'], fallback_format: 'twig' }
             - { path: '^/', priorities: ['json'], fallback_format: 'json' }
     view:
         view_response_listener: force

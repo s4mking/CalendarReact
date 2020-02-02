@@ -10,12 +10,14 @@ use FOS\RestBundle\View\View;
 use App\Repository\BookingRepository;
 use App\Repository\UserRepository;
 use App\Service\Calendar;
+use CalendarBundle\Event\CalendarEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
+use PhpParser\Node\Expr\Cast;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
@@ -34,7 +36,7 @@ class BookingController extends AbstractFOSRestController
 
     /**
      * Creates an Article resource
-     * @Rest\Post("/events", name="api_post_booking")
+     * @Rest\Post("/bookings", name="api_post_booking")
      * @Rest\View(serializerGroups={"event"})
      * @param Request $request
      * @return View
@@ -112,14 +114,41 @@ class BookingController extends AbstractFOSRestController
     }
 
     /**
-     * Retrieves an Article resource
-     * @Rest\Get("/calendar", name="api_get_calendar")
-     * @Rest\View(serializerGroups={"event","user"})
+     * Retrieves all month events
+     * @Rest\Post("/calendar", name="api_get_calendar_month")
+     * @Rest\View(serializerGroups={"event"})
      * @ParamConverter()
      */
-    public function getCalendar(Calendar $calendar): View
+    public function getCalendar(Request $request, Calendar $calendar): View
     {
-        dd($calendar);
-        // return View::create($booking, Response::HTTP_OK);
+        return View::create($calendar->calendarMonthly($request->get('month')), Response::HTTP_OK);
+    }
+
+    /**
+     * @Rest\Post("/bookings/{id}/unsuscribe", name="api_unsuscribe_booking")
+     * @Rest\View(serializerGroups={"event"})
+     * @ParamConverter()
+     */
+    public function unsuscribeBooking(Request $request, Booking $booking): View
+    {
+        $user = $this->getUser();
+        $user->removeBookingsReserved($booking);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+        return View::create($booking, Response::HTTP_OK);
+    }
+    /**
+     * @Rest\Post("/bookings/{id}", name="api_suscribe_booking")
+     * @Rest\View(serializerGroups={"event"})
+     * @ParamConverter()
+     */
+    public function suscribeBooking(Request $request, Booking $booking): View
+    {
+        $booking->setSubscribedUser($this->getUser());
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($booking);
+        $entityManager->flush();
+        return View::create($booking, Response::HTTP_OK);
     }
 }
