@@ -48,7 +48,7 @@ export default class SlideScheduler extends React.Component {
                     {/* <button className="btn btn-info" onClick={() => this.props.saveSchedules(this.state.schedules)}>
                          Enregistrer
                     </button> */}
-                    <div></div>
+                    <div></div> 
                 </Modal.Footer>
             </Modal>
         );
