@@ -3,14 +3,39 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@progress/kendo-data-query": "^1.5.2",
+    "@progress/kendo-date-math": "^1.5.1",
+    "@progress/kendo-drawing": "^1.6.0",
+    "@progress/kendo-react-buttons": "^3.10.1",
+    "@progress/kendo-react-data-tools": "^3.10.1",
+    "@progress/kendo-react-dateinputs": "^3.10.1",
+    "@progress/kendo-react-dialogs": "^3.10.1",
+    "@progress/kendo-react-dropdowns": "^3.10.1",
+    "@progress/kendo-react-form": "^3.10.1",
+    "@progress/kendo-react-grid": "^3.10.1",
+    "@progress/kendo-react-inputs": "^3.10.1",
+    "@progress/kendo-react-intl": "^3.10.1",
+    "@progress/kendo-react-popup": "^3.10.1",
+    "@progress/kendo-react-scheduler": "^3.10.1",
+    "@progress/kendo-theme-default": "^4.12.1",
+    "@syncfusion/ej2-react-schedule": "^17.4.47",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "classnames": "^2.2.6",
+    "cldr-data": "^36.0.0",
     "react": "^16.12.0",
+    "react-big-calendar": "^0.23.0",
+    "react-big-scheduler": "^0.2.7",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-datetime": "^2.16.3",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
-    "redux": "^4.0.5"
+    "react-slot": "^0.1.2",
+    "react-trip-date": "0.0.3",
+    "redux": "^4.0.5",
+    "styled-components": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,5 +57,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "systemjs-plugin-json": "^0.3.0"
   }
 }

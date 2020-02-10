@@ -1,7 +1,7 @@
 export default {
     getToken: (email, password) => {
         return new Promise((resolve,reject) => {
-            fetch("http://127.0.0.1:8000/api/auth", {
+            fetch("https://127.0.0.1:8000/api/auth", {
                 method: 'POST',
                 headers: {
                     'Content-Type': "application/json"
@@ -39,5 +39,25 @@ export default {
             })
         })
     },
+
+    Profile: (username, email, password) => {
+        return new Promise((resolve, reject) => {
+            fetch("http://127.0.0.1:8000/api/users/me", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                body: JSON.stringify({"username": username, "email" : email, "password": password})
+            }).then((data) => {
+                data.json().then((json) => {
+                    resolve(json)
+                }).catch((errors)=>{
+                    reject()
+                    console.error('errors',errors)
+                })
+            })
+        })
+    },
+    
     
 }

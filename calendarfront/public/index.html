@@ -10,6 +10,60 @@
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link href="//cdn.syncfusion.com/ej2/ej2-base/styles/material.css" rel="stylesheet" />
+    <link href="//cdn.syncfusion.com/ej2/ej2-react-buttons/styles/material.css" rel="stylesheet" />
+    <link href="//cdn.syncfusion.com/ej2/ej2-react-calendars/styles/material.css" rel="stylesheet" />
+    <link href="//cdn.syncfusion.com/ej2/ej2-react-dropdowns/styles/material.css" rel="stylesheet" />
+    <link href="//cdn.syncfusion.com/ej2/ej2-react-inputs/styles/material.css" rel="stylesheet" />
+    <link href="//cdn.syncfusion.com/ej2/ej2-react-navigations/styles/material.css" rel="stylesheet" />
+    <link href="//cdn.syncfusion.com/ej2/ej2-react-popups/styles/material.css" rel="stylesheet" />
+    <link href="//cdn.syncfusion.com/ej2/ej2-react-schedule/styles/material.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.38/system.js"></script>
+    <link href="//cdn.syncfusion.com/ej2/ej2-base/styles/material.css" rel="stylesheet" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-react-buttons/styles/material.css" rel="stylesheet" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-react-calendars/styles/material.css" rel="stylesheet" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-react-dropdowns/styles/material.css" rel="stylesheet" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-react-inputs/styles/material.css" rel="stylesheet" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-react-navigations/styles/material.css" rel="stylesheet" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-react-popups/styles/material.css" rel="stylesheet" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-react-schedule/styles/material.css" rel="stylesheet" />
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.38/system.js"></script>
+      <script src="systemjs.config.js">
+          System.config({
+              paths: {
+                  'syncfusion:': 'npm:@syncfusion/'
+              },
+              map: {
+                  app: 'app',
+          
+                  //Syncfusion packages mapping
+                  "@syncfusion/ej2-base": "syncfusion:ej2-base/dist/ej2-base.umd.min.js",
+                  "@syncfusion/ej2-data": "syncfusion:ej2-data/dist/ej2-data.umd.min.js",
+                  "@syncfusion/ej2-schedule": "syncfusion:ej2-schedule/dist/ej2-schedule.umd.min.js",
+                  "@syncfusion/ej2-calendars": "syncfusion:ej2-calendars/dist/ej2-calendars.umd.min.js",
+                  "@syncfusion/ej2-buttons": "syncfusion:ej2-buttons/dist/ej2-buttons.umd.min.js",
+                  "@syncfusion/ej2-inputs": "syncfusion:ej2-inputs/dist/ej2-inputs.umd.min.js",
+                  "@syncfusion/ej2-lists": "syncfusion:ej2-lists/dist/ej2-lists.umd.min.js",
+                  "@syncfusion/ej2-navigations": "syncfusion:ej2-navigations/dist/ej2-navigations.umd.min.js",
+                  "@syncfusion/ej2-popups": "syncfusion:ej2-popups/dist/ej2-popups.umd.min.js",
+                  "@syncfusion/ej2-dropdowns": "syncfusion:ej2-dropdowns/dist/ej2-dropdowns.umd.min.js",
+                  "@syncfusion/ej2-splitbuttons": "syncfusion:ej2-splitbuttons/dist/ej2-splitbuttons.umd.min.js",
+                  "cldr-data": 'npm:cldr-data',
+                  "plugin-json": "npm:systemjs-plugin-json/json.js"
+              },
+              meta: {
+                  '*.json': { loader: 'plugin-json' }
+              },
+              packages: {
+                  'app': { main: 'app', defaultExtension: 'js' },
+                  'cldr-data': { main: 'index.js', defaultExtension: 'js' }
+              }
+          });
+          
+          System.import('app');
+      </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -25,10 +79,21 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style>
+      #loader {
+          color: #008cff;
+          height: 40px;
+          left: 45%;
+          position: absolute;
+          top: 45%;
+          width: 30%;
+      }
+  </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <div id="schedule"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

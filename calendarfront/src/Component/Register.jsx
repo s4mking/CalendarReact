@@ -28,21 +28,21 @@ class Register extends React.Component {
 
     render() {
         return (
-            <div class="wrapper fadeInDown">
+            <div className="wrapper fadeInDown">
                 <div id="formContent">
-                    <div class="fadeIn first">
+                    <div className="fadeIn first">
                         <img src={profile} id="icon" alt="User Icon" />
                     </div>
 
                     <form onSubmit={this.handleSubmit.bind(this)}>
-                        <input type="text" id="name" class="fadeIn second" name="username" value={ this.state.username } onChange={ this.handleChange }  placeholder="First name"/>
-                        <input type="text" id="login" class="fadeIn second" name="email" value={ this.state.email } onChange={ this.handleChange } placeholder="Email"/>
-                        <input type="text" id="password" class="fadeIn third" name="password" value={ this.state.password } onChange={ this.handleChange } placeholder="Password"/>
-                        <button type="submit" class="fadeIn fourth" value="Register"/>
+                        <input type="text" id="name" className="fadeIn second" name="username" value={ this.state.username } onChange={ this.handleChange }  placeholder="First name"/>
+                        <input type="text" id="login" className="fadeIn second" name="email" value={ this.state.email } onChange={ this.handleChange } placeholder="Email"/>
+                        <input type="text" id="password" className="fadeIn third" name="password" value={ this.state.password } onChange={ this.handleChange } placeholder="Password"/>
+                        <button type="submit" className="fadeIn fourth" value="Register"/>
                     </form>
 
                     <div id="formFooter">
-                        <a class="underlineHover" href="/logout">Welcome</a>
+                        <a className="underlineHover" href="/logout">Welcome</a>
                     </div>
 
                 </div>

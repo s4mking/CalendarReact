@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Login from "../Component/Login"
 import Register from "../Component/Register"
-
+import SlideScheduler from "../Component/Scheduler"
 
 export default function MyRoute() {
     return (
@@ -22,9 +22,13 @@ export default function MyRoute() {
                     <li>
                         <Link to="/register">Register</Link>
                     </li>
+                    <li>
+                        <Link to="/agenda">Agenda</Link>
+                    </li>
                 </ul>
                 <Route path="/login" component={Login}/>
                 <Route path="/register" component={Register}/>
+                <Route path="/agenda" component={SlideScheduler}/>
             </div>
         </Router>
         
